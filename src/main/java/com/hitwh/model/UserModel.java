@@ -1,6 +1,8 @@
 package com.hitwh.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 /**
@@ -14,14 +16,17 @@ public class UserModel {
     /**
      * 学生编号
      */
+    @NotNull
     private Integer myId;
     /**
      * 登录的用户名
      */
+    @NotNull
     private String userName;
     /**
      * 登录的密码
      */
+    @NotBlank
     private String password;
     /**
      *工号或学号

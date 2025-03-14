@@ -1,21 +1,18 @@
 package com.hitwh.config;
 
-import com.alibaba.fastjson.JSONObject;
-import com.hitwh.exception.AppException;
 import com.hitwh.exception.ForbiddenException;
 import com.hitwh.exception.UnauthorizedException;
-import com.hitwh.response.Response;
 import com.hitwh.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * 登录检查过滤器
@@ -84,7 +81,7 @@ public class LoginCheckFilter implements Filter {
             if(redisValue==null || redisValue.isEmpty()){
                 throw new UnauthorizedException("未登录");
             }
-            if (!stringRedisTemplate.hasKey(redisKey) || !stringRedisTemplate.opsForValue().get(redisKey).trim().equals(jwt)) {
+            if (!stringRedisTemplate.hasKey(redisKey) || !Objects.requireNonNull(stringRedisTemplate.opsForValue().get(redisKey)).trim().equals(jwt)) {
                 throw new UnauthorizedException("登录校验失败");
             }
             // 检查用户权限，根据不同的URL模式和用户角色判断是否放行

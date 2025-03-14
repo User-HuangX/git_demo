@@ -14,31 +14,30 @@ public class JwtUtils {
     /**
      * 生成JWT令牌
      *
-     * @param claims
-     * @return
      */
     public static String generateJwt(Map<String, Object> claims) {
-        String jwt = Jwts.builder()
-                .addClaims(claims)
-                .signWith(SignatureAlgorithm.HS256, SIGN_KEY)
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
+//        return Jwts.builder()
+//                .addClaims(claims)
+//                .signWith(SignatureAlgorithm.HS256, SIGN_KEY)
+//                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
+//                .compact();
+        return Jwts.builder()
+                .claims(claims)
+                .signWith(SignatureAlgorithm.HS256,SIGN_KEY)
+                .expiration(new Date(System.currentTimeMillis() + EXPIRE))
                 .compact();
-        return jwt;
     }
 
     /**
      * 解析JWT令牌
      *
-     * @param jwt
-     * @return
      */
     public static Claims parseJWT(String jwt) {
-        Claims claims = Jwts.parser()
+        return Jwts.parser()
                 .setSigningKey(SIGN_KEY)
                 .build()
                 .parseClaimsJws(jwt)
                 .getBody();
-        return claims;
     }
 
 

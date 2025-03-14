@@ -6,7 +6,6 @@ import jakarta.validation.ValidatorFactory;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 /**
  * 配置类，用于定义验证器和相关处理
@@ -23,25 +22,10 @@ public class ValidatorConfig {
      */
     @Bean
     public static Validator validator() {
-        try (ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class)
-                .configure()
-                // 快速失败模式：
-                .failFast(true)
-                .buildValidatorFactory()) {
-            return validatorFactory.getValidator();
-        }
+        return Validation
+                .byProvider(HibernateValidator.class)
+                .configure().failFast(true)
+                .buildValidatorFactory()
+                .getValidator();
     }
-
-    /**
-     * 设置 Validator 模式为快速失败返回
-     *
-     * @return MethodValidationPostProcessor 实例，用于处理方法级别的验证
-     */
-    @Bean
-    public static MethodValidationPostProcessor methodValidationPostProcessor() {
-        MethodValidationPostProcessor postProcessor = new MethodValidationPostProcessor();
-        postProcessor.setValidator(validator());
-        return postProcessor;
-    }
-
 }

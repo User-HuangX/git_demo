@@ -37,10 +37,10 @@ public class ParameterValidationAspect {
     @Around("execution(* com.hitwh..*(..)) && args(param)")
     public Object validateParameters(ProceedingJoinPoint joinPoint, Object param) throws Throwable {
         // 验证参数是否符合规范
-        Set<ConstraintViolation<Object>> violations = validator.validate(param);
+        Set<ConstraintViolation<Object>> set = validator.validate(param);
         // 如果验证失败，抛出异常并给出失败原因
-        if (!violations.isEmpty()) {
-            throw new InvalidRequestException("参数验证失败： " + violations.iterator().next().getMessage());
+        if (!set.isEmpty()) {
+            throw new InvalidRequestException("参数验证失败： " + set.iterator().next().getMessage());
         }
         // 如果验证成功，继续执行被拦截的方法
 

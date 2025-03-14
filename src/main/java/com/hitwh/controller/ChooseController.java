@@ -1,14 +1,11 @@
 package com.hitwh.controller;
 
 import com.hitwh.annotation.RecordTime;
-import com.hitwh.exception.ResultNotFoundException;
 import com.hitwh.model.*;
-import com.hitwh.request.ChooseRequest;
 import com.hitwh.request.PageBean;
 import com.hitwh.request.PositionRequest;
 import com.hitwh.service.ChooseService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -78,7 +78,11 @@ public class ChooseServiceImpl implements ChooseService {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         } finally {
-            redisDistributedLock.releaseLock(lockKey, requestId);
+            if (redisDistributedLock.releaseLock(lockKey, requestId)) {
+                log.info("释放锁成功");
+            } else {
+                log.info("释放锁失败");
+            }
         }
     }
 
