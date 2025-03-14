@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication
 @ServletComponentScan
 public class ShikeApplication {
+    //测试git
         public static void main(String[] args) {
             SpringApplication.run(ShikeApplication.class, args);
         }
