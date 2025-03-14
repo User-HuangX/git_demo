@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @ServletComponentScan
 public class ShikeApplication {
 
-  //你好吗
+  //33333dw1azd15a1wd5as1da54w1d54a
         public static void main(String[] args) {
             SpringApplication.run(ShikeApplication.class, args);
         }
