@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @ServletComponentScan
 public class ShikeApplication {
     //测试git
+    //测试git2
         public static void main(String[] args) {
             SpringApplication.run(ShikeApplication.class, args);
         }
