@@ -12,6 +12,7 @@ public class ShikeApplication {
     //测试git
     //测试git2
     //测试git3
+    //啊啊啊啊
         public static void main(String[] args) {
             SpringApplication.run(ShikeApplication.class, args);
         }
