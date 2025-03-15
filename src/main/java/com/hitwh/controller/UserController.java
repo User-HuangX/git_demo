@@ -23,7 +23,7 @@ import com.hitwh.response.Response;
 import java.io.InputStream;
 import java.util.List;
 
-import static com.hitwh.utils.getPinyinInitial.getPinyinInitial;
+import static com.hitwh.utils.pinYinUtils.getPinyinInitial;
 
 /**
  * 用户控制器类，处理与用户相关的HTTP请求

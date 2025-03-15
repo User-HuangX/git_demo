@@ -6,7 +6,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-public class getPinyinInitial {
+public class pinYinUtils {
     public static String getPinyinInitial(String name) {
         // 创建格式化对象
         HanyuPinyinOutputFormat outputFormat = new HanyuPinyinOutputFormat();

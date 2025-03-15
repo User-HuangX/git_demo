@@ -31,7 +31,6 @@ public class ChooseController {
     @PostMapping("/student/chooseCourse")
     public Response chooseCourse(@RequestAttribute String userId, Integer courseId) {
         log.info("进行选课操作");
-
         chooseService.chooseCourse(courseId,userId);
         return Response.success("选择成功");
     }

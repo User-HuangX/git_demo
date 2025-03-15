@@ -50,7 +50,7 @@ public class ChooseServiceImpl implements ChooseService {
     public void chooseCourse(Integer courseId,String userId) {
         UserModel user=commonMapper.getMyModelByUserId(userId);
         CourseModel courseModel = commonMapper.getCourseModelByCourseId(courseId);
-        String lockKey = "lock:choose:" + userId + ":" + courseModel.getCourseId();
+        String lockKey = "lock:choose:";
         long id = redisIdWorker.nextId(lockKey);
         String requestId = Long.toString(id);
         int EXPIRE_TIME = 100000; // 锁的过期时间，单位：秒
